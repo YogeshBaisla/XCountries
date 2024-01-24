@@ -11,7 +11,7 @@ export default function App() {
       const data = await response.json();
       setCountries(data);
   } catch (err) {
-      console.error("Error fetching data: ", err);
+      console.log("Error fetching data: ", err);
   }}
   fetchCountries()
   }, []);
