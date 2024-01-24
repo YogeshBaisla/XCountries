@@ -5,10 +5,15 @@ export default function App() {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => setCountries(data))
-      .catch((err) => console.error("Error fetching data: ", err));
+    const fetchCountries = async()=>{
+    try {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      const data = await response.json();
+      setCountries(data);
+  } catch (err) {
+      console.error("Error fetching data: ", err);
+  }}
+  fetchCountries()
   }, []);
   const cardStyle = {
     width: "200px",
